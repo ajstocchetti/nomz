@@ -9,10 +9,8 @@ Nomz! is a social media food app. It is written in React Native. Nomz! allows yo
 ## So this is like the 'Tinder for Food'?
 Yes, only the restaurant won't send you obnoxious messages at 4am.
 
-## Notes
-#### Prequisites:  
-1. Create .env file at the root location   
-2. Fill in the following keys:  
+## Setup
+Create a file named .env in the root directory with the following keys
 
 MONGOURI=XYZ  
 SESSION_SECRET=XYZ  
