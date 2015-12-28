@@ -27,7 +27,7 @@ class Post extends Component{
     if (this.props.postData.user) {
       postUser = (
           <View style={styles.postInfoRow}>
-            <TouchableOpacity 
+            <TouchableOpacity
             // style={styles.postUser}
             underlayColor='transparant'>
               <Text style={styles.postUser}> {this.props.postData.user} </Text>
@@ -41,12 +41,11 @@ class Post extends Component{
         <View style={styles.post}>
 
         <View style={styles.imageWrap}>
-          <Image 
+          <Image
             style={styles.postImage}
             source={{uri: this.props.postData.imageUrl}}
             resizeMode='stretch'>
             <View style={styles.imgHeader}>
-              <Text style={styles.headerText}>{this.props.postData.menuItem.name}</Text>
               {nomz}
             </View>
           </Image>

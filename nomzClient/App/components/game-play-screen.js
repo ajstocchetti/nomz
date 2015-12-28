@@ -7,7 +7,6 @@ var React = require('react-native');
 
 var Results = require('./game-results.js');
 var Button = require('./react-native-button');
-var color = require('./colors');
 var Dimensions = require('Dimensions');
 var windowSize = Dimensions.get('window');
 var {
@@ -44,8 +43,7 @@ var Application = React.createClass({
       // not using Yes and No counts yet, but could be useful in the future
       Yes: 0,
       No: 0,
-      opacity: 1,
-      background: "nomz"
+      opacity: 1
     }
   },
 

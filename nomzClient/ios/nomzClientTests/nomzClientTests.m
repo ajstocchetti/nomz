@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  */
-
+/*
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
@@ -66,5 +66,5 @@
   XCTAssertTrue(foundElement, @"Couldn't find element with text '%@' in %d seconds", TEXT_TO_LOOK_FOR, TIMEOUT_SECONDS);
 }
 
-
 @end
+*/

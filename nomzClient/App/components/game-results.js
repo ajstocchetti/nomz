@@ -45,7 +45,6 @@ class GameResults extends Component {
                 },
                 body: JSON.stringify(this.props.preferences)
             })
-            // fetch(url)
             .then((res) => res.json())
             .then((resData) => {
                 this.setState({
@@ -152,8 +151,8 @@ var styles = StyleSheet.create({
         height: 120
     },
     venueHeader: {
-        fontWeight: 'bold', 
-        color: 'white', 
+        fontWeight: 'bold',
+        color: 'white',
         fontSize: 20,
         backgroundColor: 'transparent',
         shadowColor: 'black',
@@ -165,7 +164,7 @@ var styles = StyleSheet.create({
         shadowOpacity: 0.9
     },
     venueSubheader: {
-        fontWeight: 'bold', 
+        fontWeight: 'bold',
         color: 'white',
         backgroundColor: 'transparent',
         shadowColor: 'black',
@@ -177,12 +176,12 @@ var styles = StyleSheet.create({
         shadowOpacity: 0.9
     },
     venueRating: {
-        position: 'absolute', 
-        left: 20, 
+        position: 'absolute',
+        left: 20,
         top: -10,
-        fontSize: 110, 
-        color: '#4169E1', 
-        opacity: 0.5, 
+        fontSize: 110,
+        color: '#4169E1',
+        opacity: 0.5,
         backgroundColor: 'transparent'
     }
 });

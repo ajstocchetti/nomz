@@ -1,7 +1,6 @@
 'use strict';
 
 var router = require('express').Router(),
-  // RecommendationService = require('../services/Recommendations.js'),
   fsHelper = require('./foursquare-helper'),
   _ = require('lodash');
 
@@ -29,7 +28,6 @@ router.post('/', ensureAuthenticated, function (req, res) {
 });
 
 var makeRecommendation = function(prefs, venueList) {
-  // venueList.forEach(venue => venue.nomzRank = 0);
   venueList.forEach(venue => {
     let venueRank = 0;
     let venueWeight = 70;

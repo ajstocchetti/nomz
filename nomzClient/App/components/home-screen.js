@@ -1,14 +1,18 @@
 var React = require('react-native');
 
 var Button = require('./react-native-button');
-var Play = require('./game-play');
+var Play = require('./game-play-screen');
 var Feed = require('./feed');
 var api = require('./utils/api');
+var PhotoUpload = require('./camera/camera-roll-select-screen');
+var Camera = require('./camera/camera-app');
+
 var {
   StyleSheet,
   View,
   Text,
   Image,
+  AlertIOS,
   NavigatorIOS,
   TouchableOpacity,
   AsyncStorage
@@ -41,6 +45,15 @@ var Homescreen = React.createClass({
       })
   },
 
+
+  // componentWillReceiveProps(nextProps) {
+  //   console.log('nextProps:', nextProps)
+  //   if (nextProps.user) {
+  //    //  this.setState({
+  //    //      // set something
+  //    // });
+  //   }
+  // },
 
   playGame() {
     this.props.navigator.push({
@@ -79,7 +92,7 @@ var Homescreen = React.createClass({
   },
 
   logout() {
-    // send logout request 
+    // send logout request
     // TO DO: Better error handling
     api.logout().then( res => {
       if (res.status === 200) {
@@ -94,12 +107,43 @@ var Homescreen = React.createClass({
      }).done()
   },
 
+  takePhoto() {
+    this.props.navigator.push({
+      title: 'Post a Pic',
+      component: Camera,
+      backButtonTitle: ' ',
+      passProps: { user: this.state.user._id }
+    });
+  },
+
+  photoFromRoll() {
+    this.props.navigator.push({
+      title: 'Post a Pic',
+      component: PhotoUpload,
+      backButtonTitle: ' ',
+      passProps: { user: this.state.user._id }
+    });
+  },
+
+  goToPhotos() {
+    AlertIOS.alert(
+      'Upload Image',
+      'Upload image from...',
+      [
+        {text: 'Camera Roll', onPress: () => this.photoFromRoll()},
+        {text: 'Take Photo', onPress: () => this.takePhoto()},
+      ]
+    )
+  },
+
   render() {
-    console.log('homepage Props:', this.props)
-    console.log('homepage State:', this.state)
+    // console.log('user Props:', this.props.user)
+    // console.log('homepage Props:', this.props)
+    // console.log('homepage State:', this.state)
     var authButton;
     var feedButton;
     var profileButton;
+    var cameraButton;
     // if user logged in (according to state, render login button)
     if (!this.state.isLoggedIn) {
       authButton = (
@@ -111,6 +155,7 @@ var Homescreen = React.createClass({
       );
       feedButton = <View></View>
       profileButton = <View></View>
+      cameraButton = <View></View>
 
     } else { // otherwise, render logout button
         authButton = (
@@ -120,7 +165,6 @@ var Homescreen = React.createClass({
             {"Log Out"}
           </Button>
       ),
-        // feedButton = <View></View>
       feedButton = (
         <Button
           style={styles.btn}
@@ -134,6 +178,14 @@ var Homescreen = React.createClass({
           style={styles.btn}
           onPress={this.goToProfile}>
           {'Profile'}
+        </Button>
+      ),
+
+      cameraButton = (
+        <Button
+          style={styles.btn}
+          onPress={this.goToPhotos}>
+          {"Take a photo"}
         </Button>
       )
 
@@ -151,6 +203,7 @@ var Homescreen = React.createClass({
           </Button>
           { feedButton }
           { profileButton }
+          { cameraButton }
           { authButton }
         </View>
       </View>
